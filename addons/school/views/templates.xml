@@ -1,0 +1,49 @@
+<odoo>
+    <data>
+        <!-- Definir algunas interfases -->
+        <!--el record id, es un idenficador de toda la sección, en este caso significa que vamos a tener una vista de arbol de una lista de estudiantes-->
+        <!-- la propiedad model, se colocara el tipo de interfaz (ir.ui.view) elemento visual dentro de la pantalla -->
+        <record id="student_tree_view" model="ir.ui.view">  <!--Etiqueta record, nos va a permitir colocar algún tipo de interfaz que puede ser un formulario o una lista de elementos-->
+            <field name="name">student.tree.view</field> <!--Propiedad name, con nombre de interfaz student.tree.view-->
+            <field name="model">school.student</field>   <!--Modelo en el que va a estar basado, y este debe de coincidir con algo que ya exista (en nuestro caso nuestro modelo school.student)-->
+            <field name="arch" type="xml"> <!--Este field contendra toda la interfaz que va dentro de pantalla-->
+              <list>  <!--Dentro va a tener una lista de elementos en forma de arbol y dentro va a haber un campo nombre y edad-->
+                <field name="name"/>
+                <field name="age"/>
+                </list> <!--Aquí no tenía list tenía tree-->
+            </field>
+        </record> <!--Esto nos mostraría un listado de todos los estudiantes por nombre y edad -->
+
+        <!--El primer record es una lista y el segundo es un formulario-->
+
+        <record id="student_form_view" model="ir.ui.view">
+            <field name="name">student.form.view</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+              <form> <!--Aquí ira un formulario y este contendra el campo name y el campo age-->
+                    <group> <!--Group es para que podamos colocar algún texto -->
+                        <field name="name"/>
+                    </group> 
+                    <group>
+                    <field name="age"/>
+                    </group>
+              </form>
+            </field>
+        </record>
+
+
+
+        <record id="student_action" model="ir.actions.act_window"> <!--Esto indica como se mostrara en la pestaña de Apps de Odoo   -->
+        <field name="name">Students</field><!--Nombre del modelo-->
+        <field name="res_model">school.student</field> <!--Modelo en el que estara basado de nombre school.student-->
+        <field name="view_mode">list,form</field> <!--View mode que va a contener,que va a ser un tree y un form-->
+        </record>
+
+        <menuitem id="menu_root" name="Richard"/> <!--Atributo llamado menuitem con id llamado "menu_root" y el nombre que sera el nombre que aparecera en la pestaña "School"-->
+        <menuitem id="menu_students" name="Students" parent="menu_root" />
+        <menuitem id="menu_students_list" name="Students List"
+        parent="menu_students" action="student_action" />
+        
+
+    </data>
+</odoo>
