@@ -39,7 +39,7 @@
         <field name="view_mode">list,form</field> <!--View mode que va a contener,que va a ser un tree y un form-->
         </record>
 
-        <menuitem id="menu_root" name="Richi Piña"/> <!--Atributo llamado menuitem con id llamado "menu_root" y el nombre que sera el nombre que aparecera en la pestaña "School"-->
+        <menuitem id="menu_root" name="RichiPiña"/> <!--Atributo llamado menuitem con id llamado "menu_root" y el nombre que sera el nombre que aparecera en la pestaña "School"-->
         <menuitem id="menu_students" name="Students" parent="menu_root" />
         <menuitem id="menu_students_list" name="Students List"
         parent="menu_students" action="student_action" />
